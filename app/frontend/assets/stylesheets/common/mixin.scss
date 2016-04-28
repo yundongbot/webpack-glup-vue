@@ -1,0 +1,287 @@
+/**
+ * 常用的mixin方法
+ * 关于私有属性前缀大部分情况可以直接使用
+ * autoprefixer-rails https://rubygems.org/gems/autoprefixer-rails
+ */
+
+// 默认字体
+@mixin font-family() {
+  font-family:
+    Helvetica,
+    Arial,
+    "Helvetica Neue",
+    "Droid Sans",
+    "Heiti SC",
+    sans-serif;
+}
+
+@mixin flex-box() {
+  display: box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  /* 09版 */
+  -webkit-box-orient: horizontal;
+  /* 12版 */
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  -ms-flex-direction: row;
+  -o-flex-direction: row;
+  flex-direction: row;
+}
+
+@mixin flex($value: 1) {
+  -webkit-box-flex: $value;
+  -webkit-flex: $value;
+  -ms-flex: $value;
+  flex: $value;
+}
+
+@mixin justify-content($value: center) {
+  /* 09版 */
+  -webkit-box-pack: $value;
+  /* 12版 */
+  -webkit-justify-content: $value;
+  -moz-justify-content: $value;
+  -ms-justify-content: $value;
+  -o-justify-content: $value;
+  justify-content: $value;
+}
+
+@mixin align-items($value: center) {
+  /* 09版 */
+  -webkit-box-align: $value;
+  /* 12版 */
+  -webkit-align-items: $value;
+  -moz-align-items: $value;
+  -ms-align-items: $value;
+  -o-align-items: $value;
+  align-items: $value;
+}
+
+@mixin align-self($value: center) {
+  /* 09版 */
+  -webkit-align-self: $value;
+  /* 12版 */
+  -webkit-align-self: $value;
+  -moz-align-self: $value;
+  -ms-align-self: $value;
+  -o-align-self: $value;
+  align-self: $value;
+}
+
+@mixin flex-direction($value: column) {
+  /* 09版 */
+  -webkit-box-orient: vertical;
+  /* 12版 */
+  -webkit-flex-direction: $value;
+  -moz-flex-direction: $value;
+  -ms-flex-direction: $value;
+  -o-flex-direction: $value;
+  flex-direction: $value;
+}
+
+@mixin transform($value: scale(1)) {
+  -webkit-transform: $value;
+  -moz-transform: $value;
+  -ms-transform: $value;
+  -o-transform: $value;
+  transform: $value;
+}
+
+@mixin transform-origin($value: 50% 50% 0) {
+  -webkit-transform-origin: $value;
+  -moz-transform-origin: $value;
+  -ms-transform-origin: $value;
+  -o-transform-origin: $value;
+  transform-origin: $value;
+}
+
+@mixin transition($value: all 0.35s ease-in-out) {
+  -webkit-transition: $value;
+  -moz-transition: $value;
+  -ms-transform: $value;
+  -o-transform: $value;
+  transition: $value;
+}
+
+@mixin border-radius($radius: 0px) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  -o-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin box-shadow ($values) {
+  -webkit-box-shadow: $values;
+  -moz-box-shadow: $values;
+  -ms-box-shadow: $values;
+  -o-box-shadow: $values;
+  box-shadow: $values;
+}
+
+@mixin text-shadow ($values) {
+  -webkit-text-shadow: $values;
+  -moz-text-shadow: $values;
+  -ms-text-shadow: $values;
+  -o-text-shadow: $values;
+  text-shadow: $values;
+}
+
+@mixin text-stroke ($values) {
+  -webkit-text-stroke: $values;
+  -moz-text-stroke: $values;
+  -ms-text-stroke: $values;
+  -o-text-stroke: $values;
+  text-stroke: $values;
+}
+
+@mixin user-select ($values) {
+  -webkit-user-select: $values;
+  -moz-user-select: $values;
+  -ms-user-select: $values;
+  -o-user-select: $values;
+  user-select: $values;
+}
+
+// 线性渐变
+@mixin linear-gradient ($values) {
+  background-image: -moz-linear-gradient($values);
+  background-image: -webkit-linear-gradient($values);
+  background-image: -o-linear-gradient($values);
+  background-image: -ms-linear-gradient($values);
+  background-image: linear-gradient($values);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+@mixin hairline($color, $style:solid) {
+  @media (-webkit-min-device-pixel-ratio: 2) {
+    border: 0.5px $style $color;
+  }
+}
+
+@mixin border-top-1px ($color) {
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    height: 1px;
+    z-index: 10;
+    background-color: $color;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+  }
+}
+
+@mixin border-right-1px ($color) {
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 1px;
+    height: 100%;
+    right: 0;
+    top: 0;
+    z-index: 10;
+    background-color: $color;
+    -webkit-transform: scaleX(0.5);
+    transform: scaleX(0.5);
+    -webkit-transform-origin: 100% 0;
+    transform-origin: 100% 0;
+  }
+}
+
+@mixin border-left-1px ($color) {
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 1px;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    background-color: $color;
+    -webkit-transform: scaleX(0.5);
+    transform: scaleX(0.5);
+    -webkit-transform-origin: 100% 0;
+    transform-origin: 100% 0;
+  }
+}
+
+@mixin border-bottom-1px ($color) {
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    height: 1px;
+    z-index: 10;
+    background-color: $color;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+    -webkit-transform-origin: 0 100%;
+    transform-origin: 0 100%;
+  }
+}
+
+@mixin border-all-1px ($color) {
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid;
+    border-color: $color;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 200%;
+    height: 200%;
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+    -webkit-transform-origin: left top;
+    transform-origin: left top;
+  }
+}
+
+@mixin triangle-up ($color, $size) {
+  width: 0;
+  height: 0;
+  border-left: $size solid transparent;
+  border-right: $size solid transparent;
+  border-bottom: $size*2 solid $color;
+}
+
+@mixin triangle-down ($color, $size) {
+  width: 0;
+  height: 0;
+  border-left: $size solid transparent;
+  border-right: $size solid transparent;
+  border-top: $size*2 solid $color;
+}
+
+@mixin triangle-left ($color, $size) {
+  width: 0;
+  height: 0;
+  border-top: $size solid transparent;
+  border-right: $size*2 solid $color;
+  border-bottom: $size solid transparent;
+}
+
+@mixin triangle-right ($color, $size) {
+  width: 0;
+  height: 0;
+  border-top: $size solid transparent;
+  border-left: $size*2 solid $color;
+  border-bottom: $size solid transparent;
+}

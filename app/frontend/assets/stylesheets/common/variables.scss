@@ -1,0 +1,227 @@
+/**
+ * 基本样式常量
+ */
+@import "common/mixin";
+
+// 颜色
+$icon-hot: #FF3333; //献血红
+$icon-orange: #FF7500; //橙色
+$icon-wheat: #FFA400; //小麦黄
+$icon-yellow: #FFD900; //黄色
+$icon-lawn: #9ED900; //草地绿
+$icon-aqua: #1BD1A5; //蓝绿
+$icon-sky: #44CEF6; //天空蓝
+
+// 颜色
+$brand-hot: #FF4C4B; //献血红
+$brand-orange: #FF9F43; //橙色
+$brand-wheat: #FFC243; //小麦黄
+$brand-yellow: #FFE043; //黄色
+$brand-lawn: #B9D942; //草地绿
+$brand-aqua: #33CC99; //蓝绿
+$brand-gblue: #35B0EA; //天空蓝
+$brand-grass: #53D769; //草绿
+$brand-fb: #157EFB; //天空蓝
+$brand-sky: #00AEF0; //天空蓝
+
+
+/*按钮 Buttons*/
+
+// 按钮默认文字颜色
+$btn-default-color: #fff;
+
+// 按钮背景色及边框
+$btn-hot-bg : $brand-hot;
+$btn-hot-border : $brand-hot;
+
+$btn-orange-bg : $brand-orange;
+$btn-orange-border : $brand-orange;
+
+$btn-wheat-bg : $brand-wheat;
+$btn-wheat-border : $brand-wheat;
+
+$btn-yellow-bg : $brand-yellow;
+$btn-yellow-border : $brand-yellow;
+
+$btn-lawn-bg : $brand-lawn;
+$btn-lawn-border : $brand-lawn;
+
+$btn-aqua-bg : $brand-aqua;
+$btn-aqua-border : $brand-aqua;
+
+$btn-sky-bg : $brand-sky;
+$btn-sky-border : $brand-sky;
+
+
+.vue-btn-hot {
+  color: #fff;
+  background-color: $brand-hot;
+}
+
+.vue-btn-orange {
+  color: #fff;
+  background-color: $brand-orange;
+}
+
+.vue-btn-wheat {
+  color: #fff;
+  background-color: $brand-wheat;
+}
+
+.clearfix {
+  &:after {
+    clear: both;
+    content: " ";
+    display: table;
+  }
+}
+
+.vue-table {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  .vue-row {
+    display: table-row;
+    width: 100%;
+    position: relative;
+  }
+  .vue-col {
+    display: table-cell;
+    vertical-align: middle;
+  }
+}
+
+.vue-keyboard-number {
+  @include user-select(none);
+  height: 100%;
+  width: 100%;
+  font-size: 26px;
+  .vue-row {
+    height: 25%;
+  }
+  .vue-col {
+    position: relative;
+    width: 33%;
+    color: #333;
+    font-weight: 400;
+    text-align: center;
+    list-style: none;
+    vertical-align: middle;
+    background-color: #f5f5f5;
+    font-family: "Helvetica Neue Thin" !important;
+    &.highlight{
+      background: #dfdfdf;
+    }
+    .box {
+      @include border-top-1px(#c7c7c7);
+      @include border-right-1px(#c7c7c7);
+      @include flex-box();
+      @include align-items();
+      @include justify-content();
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
+  }
+  .col-del {
+    .iconfont {
+      color: #999;
+      font-size: 24px;
+    }
+  }
+  .col-del,
+  .col-point {
+    background-color: #fff;
+  }
+}
+
+.vue-selector {
+  width: 100%;
+  @include flex-box();
+
+  .item {
+    @include flex(1);
+    @include flex-box();
+    @include align-items();
+    position: relative;
+    width: 100%;
+    color: #999;
+    box-sizing: border-box;
+  }
+
+  &.vertical {
+    @include flex-direction(column);
+    @include justify-content(flex-start);
+    .item {
+      @include border-bottom-1px(#dfdfdf);
+      &.active {
+        color: #2dbafc;
+        .item-hd {
+          &:before {
+            background-color: #2dbafc;
+          }
+        }
+      }
+      &:last-child {
+        border-bottom: none;
+        &:after, &:before {
+          display: none;
+        }
+      }
+    }
+    .item-hd {
+      @include flex(0 0 60px);
+      width: 60px;
+      text-align: center;
+      line-height: 1;
+      font-size: 0;
+      &:before {
+        display: inline-block;
+        line-height: 1;
+        content: "";
+        width: 14px;
+        height: 14px;
+        border: 1px #2dbafc solid;
+        @include border-radius(50%);
+      }
+    }
+    .item-bd {
+      text-align: left;
+    }
+  }
+
+  &.horizontal {
+    @include justify-content(center);
+    @include align-items(center);
+    .item {
+      @include flex-box();
+      @include flex-direction(column);
+      @include justify-content(center);
+      @include align-items(center);
+      text-align: center;
+      height: 100%;
+      width: 50%;
+      &.active {
+        .item-bd {
+          background-color: #2dbafc;
+          color: #fff;
+        }
+      }
+    }
+    .item-hd {
+      width: 85px;
+      height: 85px;
+      display: block;
+      margin-bottom: 15px;
+    }
+    .item-bd {
+      @include border-radius(20px);
+      background-color: #f4f4f4;
+      color: #999;
+      padding: .2em .8em;
+    }
+  }
+}
